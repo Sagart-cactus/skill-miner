@@ -46,6 +46,8 @@ git clone https://github.com/Sagart-cactus/skill-miner.git
 cp -r skill-miner/skills/skill-miner ~/.codex/skills/
 ```
 
+The repo also ships a `.codex-plugin/plugin.json` manifest, so it works as a [skill-only Codex plugin](https://developers.openai.com/codex/plugins/build) for plugin-based installs.
+
 ### Any harness — standalone prompt
 
 Not using skills? Paste [skill-mining-prompt.md](skill-mining-prompt.md) directly into a session. It's the same method as the skill, phrased as a one-shot prompt.

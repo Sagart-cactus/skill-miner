@@ -1,0 +1,12 @@
+{
+  "name": "skill-miner",
+  "version": "0.1.0",
+  "description": "Mine your coding-agent session history (Claude Code, Codex CLI, opencode, pi) to discover and build the reusable skills you or your team should create.",
+  "author": {
+    "name": "Sagar Trivedi"
+  },
+  "repository": "https://github.com/Sagart-cactus/skill-miner",
+  "license": "MIT",
+  "keywords": ["skills", "session-history", "mining", "conventions", "workflows", "team"],
+  "skills": "./skills/"
+}
