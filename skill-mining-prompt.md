@@ -1,19 +1,26 @@
 # Mine my AI-session history for skills worth building
 
-You are going to mine my past Claude Code sessions to discover which reusable **skills** my team (or I) should create — then help me build and prove the best one. Work in phases and check in with me between them; don't go dark.
+You are going to mine my past coding-agent sessions to discover which reusable **skills** my team (or I) should create — then help me build and prove the best one. Work in phases and check in with me between them; don't go dark.
 
 ## Phase 0 — Inventory what already exists
 
-Before proposing anything, list what's already encoded so you don't re-propose it:
+Before proposing anything, detect which harnesses are in use on this machine and list what's already encoded so you don't re-propose it:
 
-- Skills & plugins: `~/.claude/skills/`, `~/.claude/plugins/`, any project `.claude/skills/`
-- Standing instructions: global + project `CLAUDE.md`, memory files
+- Skills & plugins: every skill directory my harnesses read — `~/.claude/skills/`, `~/.codex/skills/`, `~/.config/opencode/skills/`, `~/.pi/agent/skills/`, their project-level equivalents, and installed plugins
+- Standing instructions: global + project `CLAUDE.md` / `AGENTS.md`, memory files
 
 Treat overlap with any of these as a reason to **extend or fold in**, not to create a competing skill.
 
 ## Phase 1 — Index, don't read
 
-Transcripts live in `~/.claude/projects/<project-dir>/*.jsonl` (top-level files are main sessions; subdirectories hold subagent transcripts). Sessions can be tens of MB — **never read whole files**.
+Mine **every** harness that has history on this machine, not just the one currently running:
+
+- Claude Code: `~/.claude/projects/<project-dir>/*.jsonl` (top-level files are main sessions; subdirectories hold subagent transcripts)
+- Codex CLI: `~/.codex/sessions/YYYY/MM/DD/rollout-*.jsonl`
+- opencode: `~/.local/share/opencode/storage/` (`session/`, `message/`, `part/`)
+- pi: `~/.pi/agent/sessions/` (organized by working directory)
+
+Sessions can be tens of MB — **never read whole files**.
 
 1. Build a manifest: for each session — project, file size, message count, and the first real user message (skip tool results and `<`-prefixed system noise).
 2. Write a small digest script that, given one session file, extracts: user turns, a tool-usage histogram, and the bash commands run. You will reuse it constantly.
@@ -75,9 +82,9 @@ Solo mining has a blind spot: your sessions only contain *your* corrections and 
 
 Send teammates this self-contained prompt (they don't need to know the method — it's encoded):
 
-> Mine my Claude Code history for skill candidates and produce a **findings file** — do NOT build any skills.
+> Mine my coding-agent history for skill candidates and produce a **findings file** — do NOT build any skills.
 >
-> 1. Transcripts are in `~/.claude/projects/<project-dir>/*.jsonl` (top-level files only). They're huge — never read whole files. Build a manifest (project, size, first user message per session), then write a digest script that extracts user turns, tool histograms, and bash commands from one session at a time.
+> 1. Find every session store on this machine and mine them all — Claude Code: `~/.claude/projects/<project-dir>/*.jsonl` (top-level files only); Codex: `~/.codex/sessions/**/rollout-*.jsonl`; opencode: `~/.local/share/opencode/storage/`; pi: `~/.pi/agent/sessions/`. They're huge — never read whole files. Build a manifest (project, size, first user message per session), then write a digest script that extracts user turns, tool histograms, and bash commands from one session at a time.
 > 2. Hunt, in priority order: (a) **my mid-flow corrections** to the AI ("no, we always…", "that should have been…") — grep the user turns; (b) hard requirements I stated more than once; (c) the same commands/sequences repeated across sessions; (d) which repo/system owns what; (e) sessions that open with a pasted context/handoff doc; (f) multi-step procedures I rebuilt 3+ times.
 > 3. Litmus-test each candidate: would this matter to a *different person doing a different task* in our environment? Storyline-specific work is context, not a finding — drop it.
 > 4. Write every finding to `skill-findings-<myname>-<date>.md` in this exact format:
