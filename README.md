@@ -1,6 +1,6 @@
 # Skill Miner
 
-[![skills.sh](https://skills.sh/b/Sagart-cactus/skill-miner)](https://skills.sh/Sagart-cactus/skill-miner)
+Listed on [skills.sh](https://skills.sh/Sagart-cactus/skill-miner) · Install: `npx skills add Sagart-cactus/skill-miner`
 
 An agent skill that mines your past coding-agent session history to discover which reusable **skills** you — or your whole team — should create, then helps you build and prove the best one.
 
