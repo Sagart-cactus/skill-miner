@@ -1,5 +1,7 @@
 # Skill Miner
 
+[![skills.sh](https://skills.sh/b/Sagart-cactus/skill-miner)](https://skills.sh/Sagart-cactus/skill-miner)
+
 An agent skill that mines your past coding-agent session history to discover which reusable **skills** you — or your whole team — should create, then helps you build and prove the best one.
 
 Works with any harness that supports the [Agent Skills](https://agentskills.io) `SKILL.md` format — **Claude Code, Codex CLI, opencode, and pi** — and mines the session history of *all* of them, not just the one it's running in.
@@ -31,6 +33,12 @@ Solo mining has a blind spot: your history only contains *your* corner of the sy
 ### Claude Code, opencode, pi — one shared copy
 
 opencode and pi both read `~/.claude/skills/` in addition to their own skill directories, so a single copy there covers all three harnesses:
+
+```bash
+npx skills add Sagart-cactus/skill-miner
+```
+
+or manually:
 
 ```bash
 git clone https://github.com/Sagart-cactus/skill-miner.git
