@@ -1,0 +1,11 @@
+{
+  "name": "skill-miner",
+  "version": "0.1.0",
+  "description": "Mine your past Claude Code session history to discover, verify, and build the reusable skills you or your team should create — solo or map-reduce style across a whole team.",
+  "author": {
+    "name": "Sagar Trivedi"
+  },
+  "repository": "https://github.com/Sagart-cactus/skill-miner",
+  "license": "MIT",
+  "keywords": ["skills", "session-history", "mining", "conventions", "workflows", "team"]
+}

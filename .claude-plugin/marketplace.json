@@ -1,0 +1,13 @@
+{
+  "name": "skill-miner",
+  "owner": {
+    "name": "Sagar Trivedi"
+  },
+  "plugins": [
+    {
+      "name": "skill-miner",
+      "source": "./",
+      "description": "Mine your past Claude Code session history to discover, verify, and build the reusable skills you or your team should create."
+    }
+  ]
+}
